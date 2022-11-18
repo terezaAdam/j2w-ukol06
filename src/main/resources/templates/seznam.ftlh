@@ -3,18 +3,26 @@
     <div class="seznam">
         <a href="/detail">
             <div class="vizitka">
-                <div class="jmeno">Dita (Přikrylová) Formánková</div>
-                <div class="firma">Czechitas z. s.</div>
+                    [#list vizitky as vizitka_repository]
+                <div class="jmeno">${vizitka_repository.celeJmeno}</div>
+                <div class="firma">${vizitka_repository.firma}</div>
                 <div class="udaje">
                     <div class="adresa">
-                        <div>Václavské náměstí 837/11</div>
-                        <div><span>11000</span> <span>Praha 1</span></div>
+                        <div>${vizitka_repository.ulice}</div>
+                        <div><span>${vizitka_repository.psc}</span> <span>${vizitka_repository.obec}</span></div>
                     </div>
                     <div class="kontakty">
-                        <div><i class="las la-at"></i> <span>dita@czechitas.cs</span></div>
-                        <div><i class="las la-phone-alt"></i> <span>+420 800123456</span></div>
-                        <div><i class="las la-globe"></i> <span>www.czechitas.cz</span></div>
+                        [#if email?has_content]
+                        <div><i class="las la-at"></i> <span>${vizitka_repository.email}</span></div>
+                        [/#if]
+                        [#if telefon?has_content]
+                        <div><i class="las la-phone-alt"></i> <span>${vizitka_repository.telefon}</span></div>
+                        [/#if]
+                        [#if web?has_content]
+                        <div><i class="las la-globe"></i> <span>${vizitka_repository.web}</span></div>
+                        [/#if]
                     </div>
+                    [/#list]
                 </div>
             </div>
         </a>
